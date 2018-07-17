@@ -1,32 +1,19 @@
 package front.mapper;
 
 import front.entity.User;
-import front.entity.UserExample;
-import front.entity.UserKey;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+@Mapper
 public interface UserMapper {
-    int countByExample(UserExample example);
-
-    int deleteByExample(UserExample example);
-
-    int deleteByPrimaryKey(UserKey key);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(User record);
 
-    int insertSelective(User record);
+    User selectByPrimaryKey(Integer id);
 
-    List<User> selectByExample(UserExample example);
-
-    User selectByPrimaryKey(UserKey key);
-
-    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
-
-    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
-
-    int updateByPrimaryKeySelective(User record);
+    List<User> selectAll();
 
     int updateByPrimaryKey(User record);
 }

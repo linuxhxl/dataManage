@@ -1,4 +1,4 @@
-package base.utils;
+package front.utils;
 
 /**
  * Created with IntelliJ IDEA.

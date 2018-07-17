@@ -1,15 +1,13 @@
-package base.controller;
+package front.controller;
 
-import base.entity.User;
-import base.service.UserService;
-import base.utils.JsonResult;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import front.entity.User;
+import front.service.UserService;
+import front.utils.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -27,11 +25,26 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    /**
+    @RequestMapping(value = "users", method = RequestMethod.GET)
+    public ResponseEntity<JsonResult> getUserList (){
+        JsonResult r = new JsonResult();
+        try {
+            List<User> users = userService.getAll();
+            r.setResult(users);
+            r.setStatus("ok");
+        } catch (Exception e) {
+            r.setResult(e.getClass().getName() + ":" + e.getMessage());
+            r.setStatus("error");
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(r);
+    }
+
+  /*  *//**
      * 根据ID查询用户
      * @param id
      * @return
-     */
+     *//*
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 
@@ -52,10 +65,10 @@ public class UserController {
         return ResponseEntity.ok(r);
     }
 
-    /**
+    *//**
      * 查询用户列表
      * @return
-     */
+     *//*
     @RequestMapping(value = "users", method = RequestMethod.GET)
     public ResponseEntity<JsonResult> getUserList (){
         JsonResult r = new JsonResult();
@@ -71,11 +84,11 @@ public class UserController {
         return ResponseEntity.ok(r);
     }
 
-    /**
+    *//**
      * 添加用户
      * @param user
      * @return
-     */
+     *//*
     @RequestMapping(value = "user", method = RequestMethod.POST)
     public ResponseEntity<JsonResult> add (@RequestBody User user){
         JsonResult r = new JsonResult();
@@ -97,11 +110,11 @@ public class UserController {
         return ResponseEntity.ok(r);
     }
 
-    /**
+    *//**
      * 根据id删除用户
      * @param id
      * @return
-     */
+     *//*
     @RequestMapping(value = "user/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<JsonResult> delete (@PathVariable(value = "id") Integer id){
         JsonResult r = new JsonResult();
@@ -123,11 +136,11 @@ public class UserController {
         return ResponseEntity.ok(r);
     }
 
-    /**
+    *//**
      * 根据id修改用户信息
      * @param user
      * @return
-     */
+     *//*
     @RequestMapping(value = "user/{id}", method = RequestMethod.PUT)
     public ResponseEntity<JsonResult> update (@PathVariable("id") Integer id, @RequestBody User user){
         JsonResult r = new JsonResult();
@@ -147,6 +160,6 @@ public class UserController {
             e.printStackTrace();
         }
         return ResponseEntity.ok(r);
-    }
+    }*/
 
 }

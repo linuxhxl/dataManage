@@ -1,4 +1,4 @@
-package base.config;
+package front.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
