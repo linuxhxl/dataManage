@@ -18,7 +18,7 @@ import javax.sql.DataSource;
  * Date: 2018/7/14
  * Time: 13:06
  * To change this template use File | Settings | File Templates.
- * Description:
+ * Description: 登录地址 http://localhost:9090/druid/login.html
  */
 @Configuration
 @PropertySource(value = "classpath:druid.properties")
