@@ -29,8 +29,7 @@ public class SwaggerConfiguration {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("front.controller"))
                 .paths(PathSelectors.any())
-                .build()
-                .apiInfo(apiInfo());
+                .build();
     }
 
     private ApiInfo apiInfo() {
