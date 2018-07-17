@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * Date: 2018/7/14
  * Time: 11:10
  * To change this template use File | Settings | File Templates.
- * Description:
+ * Description: 访问路径 http://localhost:9090/swagger-ui.html
  */
 @Configuration
 @EnableSwagger2
