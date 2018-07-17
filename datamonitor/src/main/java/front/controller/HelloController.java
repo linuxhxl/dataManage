@@ -4,8 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,7 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  * Description:
  */
-@RestController
+@Controller
 @RequestMapping(value="/hello")
 public class HelloController {
 
@@ -27,16 +28,17 @@ public class HelloController {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @RequestMapping(value="/hello")
+    @RequestMapping(value="/test")
     public List<Map<String, Object>> hello() {
         List<Map<String, Object>> list = jdbcTemplate.queryForList("SELECT user FROM mysql.user ", new Object[]{});
-//       sayHello();
         return list;
     }
 
-    public String sayHello(){
-        System.out.println("hello world");
-        return "";
+    @RequestMapping("hello")
+    public String index(ModelMap map){
+        logger.info("index");
+        map.put("title","双击666!");
+        return "hello";
     }
 
 }
