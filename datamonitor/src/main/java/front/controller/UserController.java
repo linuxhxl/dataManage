@@ -3,6 +3,7 @@ package front.controller;
 import front.entity.User;
 import front.service.UserService;
 import front.utils.JsonResult;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @ApiOperation(value = "查找", notes = "查询所有的用户")
     @RequestMapping(value = "users", method = RequestMethod.GET)
     public ResponseEntity<JsonResult> getUserList (){
         JsonResult r = new JsonResult();
