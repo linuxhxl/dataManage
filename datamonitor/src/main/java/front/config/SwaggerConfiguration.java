@@ -8,6 +8,7 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,6 +19,7 @@ import springfox.documentation.spring.web.plugins.Docket;
  * Description:
  */
 @Configuration
+@EnableSwagger2
 public class SwaggerConfiguration {
 
     @Bean
@@ -25,9 +27,10 @@ public class SwaggerConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.wxy.data.controller"))
+                .apis(RequestHandlerSelectors.basePackage("front.controller"))
                 .paths(PathSelectors.any())
-                .build();
+                .build()
+                .apiInfo(apiInfo());
     }
 
     private ApiInfo apiInfo() {
