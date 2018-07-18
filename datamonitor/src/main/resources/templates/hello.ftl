@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
 	<title>FreeMarker</title>
-	
+	<#include "comm/common.ftl"/>
 	<link href="/css/index.css" rel="stylesheet" />
 	
 </head>
@@ -11,8 +11,7 @@
 		<h1 id="title">${title}</h1>
 	</center>
 	<h2>haha</h2>
-	<script type="text/javascript" src="/webjars/jquery/2.1.4/jquery.min.js"></script>
-	
+
 	<script>
 		$(function(){
 			$('#title').click(function(){
