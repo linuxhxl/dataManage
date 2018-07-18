@@ -45,8 +45,8 @@ public class UserController {
         Subject subject = SecurityUtils.getSubject();
         try {
             subject.login(token);
-            //重定向至首页
-            return "redirect:/index";
+            //直接跳转至首页
+            return "index";
         } catch (UnknownAccountException uae) {
             model.addAttribute("error", "账户不存在！");
         } catch (IncorrectCredentialsException ice) {
