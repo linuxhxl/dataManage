@@ -8,9 +8,8 @@
 </head>
 <body>
 <center>
-    <h1 id="title">hello 登录成功</h1>
+    <h1 id="title">欢饮您:${user.username} 登录成功</h1>
 </center>
-<h2>haha</h2>
 
 <script>
     $(function(){
