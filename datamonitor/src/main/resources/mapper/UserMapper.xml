@@ -2,31 +2,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="front.mapper.UserMapper" >
   <resultMap id="BaseResultMap" type="front.entity.User" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userName" property="username" jdbcType="VARCHAR" />
-    <result column="userPassword" property="userpassword" jdbcType="VARCHAR" />
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from `user`
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="front.entity.User" useGeneratedKeys="true" keyProperty="id" >
-    insert into `user` (userName, userPassword)
-    values (#{username,jdbcType=VARCHAR}, #{userpassword,jdbcType=VARCHAR})
+    insert into `user` (username, password, uuid
+      )
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR}
+      )
   </insert>
   <update id="updateByPrimaryKey" parameterType="front.entity.User" >
     update `user`
-    set userName = #{username,jdbcType=VARCHAR},
-      userPassword = #{userpassword,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      uuid = #{uuid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select id, userName, userPassword
+
+  <sql id="baseColumnList">
+    id,username,password,uuid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select   <include refid="baseColumnList"/>
     from `user`
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select id, userName, userPassword
+    select   <include refid="baseColumnList"/>
     from `user`
+  </select>
+
+  <select id="queryByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT
+    <include refid="baseColumnList"/>
+    FROM `user` WHERE username=#{username}
   </select>
 </mapper>
