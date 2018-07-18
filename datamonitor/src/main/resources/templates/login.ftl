@@ -20,7 +20,7 @@
 <body>
 <div class="container">
     <div class="col-md-4 col-md-offset-4" style="margin-top: 15%;">
-        <h2 class="text-center" style="color: white"><strong>Pre - Processor</strong></h2>
+        <h2 class="text-center" style="color: white"><strong>datamonitor</strong></h2>
         <br>
         <form action="${basePath}/login"  method="post" >
             <div class="input-group  input-group-lg">
@@ -39,7 +39,7 @@
         </form>
         <br>
         <br>
-        <p class="text-center" style="color: white">Copyright &copy; 2018 云南能管科技有限公司</p>
+        <p class="text-center" style="color: white">Copyright &copy; 2018,云南牛X公司</p>
     </div>
 </div>
 
