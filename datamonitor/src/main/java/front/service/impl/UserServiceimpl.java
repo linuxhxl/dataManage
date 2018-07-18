@@ -19,12 +19,17 @@ import java.util.List;
 @Service
 public class UserServiceimpl implements UserService {
 
-    @Autowired
+   @Autowired
     private UserMapper userMapper;
 
 
     @Override
     public List<User> getAll() {
         return userMapper.selectAll();
+    }
+
+    @Override
+    public User queryByName(String name) {
+        return this.userMapper.queryByName(name);
     }
 }

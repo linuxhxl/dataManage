@@ -23,4 +23,11 @@ public interface UserService {
 
     List<User> getAll();
 
+    /**
+     * 根据用户名查询
+     * @param name
+     * @return
+     */
+    User queryByName(String name);
+
 }

@@ -4,11 +4,19 @@ import front.entity.User;
 import front.service.UserService;
 import front.utils.JsonResult;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -20,11 +28,34 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  * Description:
  */
-@RestController
+@Controller
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String login(String username, String password, Model model) {
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        Subject subject = SecurityUtils.getSubject();
+        try {
+            subject.login(token);
+            //重定向至首页
+            return "redirect:/index";
+        } catch (UnknownAccountException uae) {
+            model.addAttribute("error", "账户不存在！");
+        } catch (IncorrectCredentialsException ice) {
+            model.addAttribute("error", "密码和账户不匹配！");
+        } catch (Exception e) {
+            model.addAttribute("error", "未知错误，登录失败！");
+        }
+        return "login";
+    }
 
     @ApiOperation(value = "查找", notes = "查询所有的用户")
     @RequestMapping(value = "users", method = RequestMethod.GET)
