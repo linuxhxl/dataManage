@@ -1,8 +1,11 @@
 package front.mapper;
 
 import front.entity.Employee;
+import org.apache.ibatis.annotations.Mapper;
+
 import java.util.List;
 
+@Mapper
 public interface EmployeeMapper {
     int deleteByPrimaryKey(Integer id);
 
