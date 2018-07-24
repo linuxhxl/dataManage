@@ -33,7 +33,7 @@ public class EmployeeController {
         return "employee";
     }
 
-    @RequestMapping("page")
+    @RequestMapping("employeePage")
     public String page(ModelMap map){
         //设置分页条件，Parameters:pageNum 页码pageSize 每页显示数量count 是否进行count查询
         PageHelper.startPage(1, 3, true);
@@ -46,7 +46,7 @@ public class EmployeeController {
         System.out.println("数据总页数：" + pageInfo.getPages());
         System.out.println("最后一页：" + pageInfo.getLastPage());
 
-        map.put("result",list);
-        return "employee";
+        map.put("pageInfo",pageInfo);
+        return "employeePage";
     }
 }
