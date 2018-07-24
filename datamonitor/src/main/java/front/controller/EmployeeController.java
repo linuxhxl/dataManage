@@ -1,7 +1,8 @@
 package front.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import front.entity.Employee;
-import front.page.Page;
 import front.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,10 +35,17 @@ public class EmployeeController {
 
     @RequestMapping("page")
     public String page(ModelMap map){
-        Page page = new Page<Employee>();
-        page.setPageNo(1);
-        page.setPageSize(5);
-        List<Employee> list = employeeService.findPage(page);
+        //设置分页条件，Parameters:pageNum 页码pageSize 每页显示数量count 是否进行count查询
+        PageHelper.startPage(1, 3, true);
+
+        List<Employee> list = employeeService.findPage();
+        PageInfo<Employee> pageInfo = new PageInfo<Employee>(list);
+
+        //打印分页信息
+        System.out.println("数据总数：" + pageInfo.getTotal());
+        System.out.println("数据总页数：" + pageInfo.getPages());
+        System.out.println("最后一页：" + pageInfo.getLastPage());
+
         map.put("result",list);
         return "employee";
     }

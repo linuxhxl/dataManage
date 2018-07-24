@@ -1,7 +1,6 @@
 package front.mapper;
 
 import front.entity.Employee;
-import front.page.Page;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -18,5 +17,5 @@ public interface EmployeeMapper {
 
     int updateByPrimaryKey(Employee record);
 
-    List<Employee> findPage(Page page);
+    List<Employee> findPage();
 }

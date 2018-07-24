@@ -2,7 +2,6 @@ package front.service.impl;
 
 import front.entity.Employee;
 import front.mapper.EmployeeMapper;
-import front.page.Page;
 import front.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +28,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public List<Employee> findPage(Page page) {
-        return employeeMapper.findPage(page);
+    public List<Employee> findPage() {
+        return employeeMapper.findPage();
     }
 }

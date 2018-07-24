@@ -1,7 +1,6 @@
 package front.service;
 
 import front.entity.Employee;
-import front.page.Page;
 
 import java.util.List;
 
@@ -11,6 +10,6 @@ import java.util.List;
 public interface EmployeeService {
     List<Employee> getAll();
 
-    List<Employee> findPage(Page page);
+    List<Employee> findPage();
 
 }
