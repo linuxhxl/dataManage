@@ -13,6 +13,9 @@
 <center>
     <a type="button" class="btn btn-success" href="/employee/employee">查看公司员工信息</a>
 </center>
+<center>
+    <a type="button" class="btn btn-success" href="/employee/page">分页查看公司员工信息</a>
+</center>
 <script>
     $(function(){
     })
