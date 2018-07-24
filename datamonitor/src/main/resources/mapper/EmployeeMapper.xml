@@ -27,4 +27,8 @@
     select id, name
     from `employee`
   </select>
+  <select id="findPage" resultMap="BaseResultMap" >
+    select id, name
+    from `employee`
+  </select>
 </mapper>
