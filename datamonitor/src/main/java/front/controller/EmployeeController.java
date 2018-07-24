@@ -1,6 +1,7 @@
 package front.controller;
 
 import front.entity.Employee;
+import front.page.Page;
 import front.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import java.util.List;
  * Description:
  */
 @Controller
+@RequestMapping("/employee")
 public class EmployeeController {
 
     @Autowired
@@ -26,6 +28,16 @@ public class EmployeeController {
     @RequestMapping("employee")
     public String index(ModelMap map){
         List<Employee> list = employeeService.getAll();
+        map.put("result",list);
+        return "employee";
+    }
+
+    @RequestMapping("page")
+    public String page(ModelMap map){
+        Page page = new Page<Employee>();
+        page.setPageNo(1);
+        page.setPageSize(5);
+        List<Employee> list = employeeService.findPage(page);
         map.put("result",list);
         return "employee";
     }
