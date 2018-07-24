@@ -11,7 +11,7 @@
     <h1 id="title">欢饮您:${user.username} 登录成功</h1>
 </center>
 <center>
-    <a type="button" class="btn btn-success" href="/employee">查看公司员工信息</a>
+    <a type="button" class="btn btn-success" href="/employee/employee">查看公司员工信息</a>
 </center>
 <script>
     $(function(){
