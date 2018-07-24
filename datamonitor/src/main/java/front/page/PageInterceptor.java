@@ -34,7 +34,7 @@ import java.util.Properties;
  * 之后再执行查询记录数的Sql语句进行总记录数的统计。
  * 
  */
-@Intercepts({ @Signature(method = "prepare", type = StatementHandler.class, args = { Connection.class }) })
+//@Intercepts({ @Signature(method = "prepare", type = StatementHandler.class, args = { Connection.class }) })
 public class PageInterceptor implements Interceptor {
 	private String databaseType; // 数据库类型，不同的数据库有不同的分页方法
 
